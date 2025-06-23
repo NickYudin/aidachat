@@ -1,0 +1,23 @@
+<form class="space-y-4 border border-gray-300 p-4 rounded-md bg-gray-50"
+      action="<%= ai_chats_path %>"
+      <%= ai_chat.new_record? ? 'data-turbo-frame=_top' : '' %>
+      data-controller="generic-form" data-action="turbo:submit-end->generic-form#reset"
+      method="POST">
+
+  <div class="space-y-4">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+    <% if ai_chat.new_record? %>
+      <div class="space-y-2">
+        <%= select_tag :ai_model_name, options_for_select(AiChat::SUPPORTED_AI_MODELS, nil), include_blank: "Select the AI model", class: 'block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500' %>
+      </div>
+    <% end %>
+
+    <div class="space-y-2">
+      <% ai_model_name = " (#{ai_chat.ai_model_name})" if ai_chat.ai_model_name.present? %>
+      <%= text_area_tag :prompt, nil, placeholder: "Write here your question for AI#{ai_model_name}", class: "block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500", rows: 10 %>
+    </div>
+
+    <%= submit_tag "Ask", class: "px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600" %>
+  </div>
+</form>

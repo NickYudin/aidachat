@@ -1,0 +1,18 @@
+<main class="max-w-4xl mx-auto px-6 py-4 bg-white shadow-md rounded-md">
+  <div class="flex items-center justify-between mb-4">
+    <h1 class="text-xl font-bold"><%= t('activerecord.models.ai_chat.other') %></h1>
+    <%= link_to new_ai_chat_path,
+                class: "bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600",
+                data: { turbo_frame: '_top' } do %>
+      <span class="material-icons">add_circle</span>
+    <% end %>
+  </div>
+
+  <%= turbo_frame_tag "ai_chats" do %>
+    <%= render "ai_chats/empty_state" %>
+
+    <% @ai_chats.each do |ai_chat| %>
+      <%= render "ai_chats/ai_chat_index", ai_chat: %>
+    <% end %>
+  <% end %>
+</main>

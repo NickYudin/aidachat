@@ -1,0 +1,13 @@
+<div class="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-md">
+  <h1 class="text-xl font-bold"><%= ai_chat.title || 'Ask to AI' %></h1>
+
+  <div id="ai_chat_<%= ai_chat.id %>_messages" class="space-y-4">
+    <% ai_chat.ai_messages.each do |ai_message| %>
+      <%= render ai_message, ai_chat: %>
+    <% end %>
+  </div>
+
+  <%= turbo_frame_tag 'prompt' do %>
+    <%= render 'form', ai_chat: %>
+  <% end %>
+</div>

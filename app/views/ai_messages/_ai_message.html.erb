@@ -1,0 +1,11 @@
+<div class="flex flex-col space-y-2 p-4 bg-gray-100 rounded-md">
+  <div class="flex items-center space-x-2">
+    <span class="font-bold text-gray-700">You:</span>
+    <span class="text-gray-900"><%= ai_message&.prompt %></span>
+  </div>
+
+  <div class="flex items-center space-x-2">
+    <span class="font-bold text-blue-700"><%= ai_chat.ai_model_name %>:</span>
+    <span class="text-gray-900"><%= ai_message&.answer %></span>
+  </div>
+</div>

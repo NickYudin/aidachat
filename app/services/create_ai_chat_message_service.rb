@@ -33,8 +33,6 @@ class CreateAiChatMessageService
   # @param user_id [Integer] [OPTIONAL] the user id to create a new AiChat, if the AiChat is not provided
   # @return [AiMessage] the created AiMessage
   def call
-    binding.pry
-
     if !ai_chat_id && !user_id
       errors.add(:ai_chat_id, "or user_id is required")
     elsif ai_chat_id && !ai_chat
@@ -57,7 +55,6 @@ class CreateAiChatMessageService
 
     ai_message
   rescue StandardError
-    puts 'error'
     # notify_error
   end
 

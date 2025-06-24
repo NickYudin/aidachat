@@ -460,7 +460,7 @@ DEPENDENCIES
   simple_command (~> 1.0)
   solid_cable
   solid_cache
-  solid_queue
+  solid_queue (~> 1.1)
   stimulus-rails
   tailwindcss-rails
   thruster

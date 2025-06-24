@@ -9,5 +9,9 @@ Rails.application.routes.draw do
 
   root "chats#index"
   resources :chats, only: [ :create ]
-  resources :ai_chats, path: "ai"
+  resources :ai_chats, path: 'ai' do
+    member do
+      post :ask
+    end
+  end
 end

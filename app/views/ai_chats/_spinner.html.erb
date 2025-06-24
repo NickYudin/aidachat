@@ -1,0 +1,11 @@
+<div id="ai_chat__spinner" class="text-center py-1">
+  <div class="animate-spin h-4 w-4 rounded-full border-t-2 border-blue-500" role="status"></div>
+
+  <% if local_assigns[:message] %>
+    <div role="status" class="text-sm text-gray-700"><%= message %></div>
+  <% else %>
+    <div class="animate-spin h-4 w-4 rounded-full border-t-2 border-blue-500" role="status"></div>
+  <% end %>
+
+  <div class="animate-spin h-4 w-4 rounded-full border-t-2 border-blue-500" role="status"></div>
+</div>

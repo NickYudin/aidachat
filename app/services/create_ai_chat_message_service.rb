@@ -19,6 +19,8 @@
 class CreateAiChatMessageService
   prepend SimpleCommand
 
+  include AiChats::Messageable
+
   DEFAULT_MODEL_NAME = "llama3.1"
 
   def initialize(prompt:, ai_chat_id: nil, user_id: nil)
@@ -72,10 +74,10 @@ class CreateAiChatMessageService
   def ai_chat
     @ai_chat ||=
       if ai_chat_id
-        AiChat.find_by(id: ai_chat_id)
+        ::AiChat.find_by(id: ai_chat_id)
       else
         # Generally AI Chat is created in the controller to provide the user with the chat url and just wait the response.
-        AiChat.create(user_id:, title: prompt.truncate(100), ai_model_name: DEFAULT_MODEL_NAME)
+        ::AiChat.create(user_id:, title: prompt.truncate(100), ai_model_name: DEFAULT_MODEL_NAME)
       end
   end
 
